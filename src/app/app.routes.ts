@@ -27,8 +27,6 @@ export const routes: Routes = [
   },
 
   // Default route
-
-
  {
     path: '',
     redirectTo: 'login',
