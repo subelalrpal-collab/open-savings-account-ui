@@ -28,17 +28,16 @@ export const routes: Routes = [
 
   // Default route
 
-  
-  {
+
+ {
     path: '',
-    redirectTo: 'verify-otp',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
 
-  // Invalid route
   {
     path: '**',
-    redirectTo: 'verify-otp'
+    redirectTo: 'login'
   }
 
 ];
