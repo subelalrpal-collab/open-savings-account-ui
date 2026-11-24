@@ -27,6 +27,8 @@ export const routes: Routes = [
   },
 
   // Default route
+
+  
   {
     path: '',
     redirectTo: 'verify-otp',
