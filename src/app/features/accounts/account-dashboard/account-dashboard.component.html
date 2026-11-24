@@ -1,0 +1,29 @@
+
+<div class="dashboard-container">
+
+  <h1>Welcome to Your Bank</h1>
+
+  <h2>My Accounts</h2>
+
+  <button
+    type="button"
+    (click)="loadAccounts()"
+    [disabled]="loading">
+    {{ loading ? 'Loading...' : 'Refresh Accounts' }}
+  </button>
+
+  <div *ngIf="loading">
+    Loading your accounts...
+  </div>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="accounts !== null">
+    <h3>Accounts API Response</h3>
+
+    <pre>{{ accounts | json }}</pre>
+  </div>
+
+</div>

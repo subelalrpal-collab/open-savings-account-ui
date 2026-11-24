@@ -1,0 +1,73 @@
+
+<div class="otp-page">
+
+  <div class="otp-card">
+
+    <div class="brand">
+      <div class="brand-logo">M</div>
+      <span>MyBank</span>
+    </div>
+
+    <div class="otp-icon">🔐</div>
+
+    <h2>OTP Verification</h2>
+
+    <p class="description">
+      We have sent a one-time password to your
+      registered mobile number.
+    </p>
+
+ <div class="mobile-number">
+  {{ mobileNumber || 'Your registered mobile number' }}
+</div>
+
+    <form [formGroup]="otpForm" (ngSubmit)="verifyOtp()">
+
+      <label for="otp">Enter your 4-digit OTP</label>
+
+      <input
+        id="otp"
+        type="text"
+        inputmode="numeric"
+        autocomplete="one-time-code"
+        maxlength="4"
+        formControlName="otp"
+        placeholder="----"
+        (input)="onOtpInput($event)"
+        class="otp-input"
+      />
+
+      <div
+        class="validation-error"
+        *ngIf="otpForm.get('otp')?.touched &&
+               otpForm.get('otp')?.invalid">
+        Please enter a valid 4-digit OTP.
+      </div>
+
+      <div class="error-message" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </div>
+  <button
+    type="submit"
+    [disabled]="otpForm.invalid || loading">
+
+    {{ loading ? 'Verifying...' : 'Verify OTP' }}
+
+  </button>
+
+    </form>
+
+    <div class="resend-section">
+      <p>Didn't receive the OTP?</p>
+      <button type="button" disabled>
+        Resend OTP (coming soon)
+      </button>
+    </div>
+
+    <div class="security-note">
+      🔒 Your banking information is protected.
+    </div>
+
+  </div>
+
+</div>

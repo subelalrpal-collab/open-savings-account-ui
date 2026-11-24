@@ -1,0 +1,39 @@
+
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+export interface VerifyOtpRequest {
+  challengeId: string;
+  otp: string;
+}
+
+export interface VerifyOtpResponse {
+  message?: string;
+  accessToken: string;
+  tokenType?: string;
+  expiresInSeconds?: number;
+}
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthService {
+
+  private readonly apiUrl =
+    'http://localhost:8080/api/v1/auth';
+
+  constructor(
+    private readonly http: HttpClient
+  ) {}
+
+  verifyOtp(
+    request: VerifyOtpRequest
+  ): Observable<VerifyOtpResponse> {
+
+    return this.http.post<VerifyOtpResponse>(
+      `${this.apiUrl}/verify-otp`,
+      request
+    );
+  }
+}
